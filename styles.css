@@ -1,0 +1,74 @@
+/* Fuente general */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Caja principal */
+.container {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  width: 350px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+/* Títulos */
+h1 {
+  font-size: 1.8rem;
+  color: #00796b;
+  margin-bottom: 20px;
+}
+
+/* Texto */
+p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Botón */
+button {
+  background: linear-gradient(135deg, #ff6f61, #f06292);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #f06292, #ff6f61);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(240, 98, 146, 0.3);
+}
+
+/* Inputs */
+input {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:focus {
+  border: 2px solid #00796b;
+}

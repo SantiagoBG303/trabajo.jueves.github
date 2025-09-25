@@ -1,15 +1,23 @@
-async function Pokemon(id){
-    
+async function pokemon(id){
+   
+        var root = document.getElementById("root");
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon/" + id);
+        const data = await res.json();
 
+        root.innerHTML = `
+          <section class="c-detalle">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png" alt="${data.name}" height="120" width="auto">
+        <p>${data.name}</p>
+        <p>${data.id}</p>
+        <p>Altura: ${data.height / 10} m / Peso: ${data.weight / 10} kg</p>
+        <p>hp: ${data.stats[0].base_stat}</p>
+        <p>Velocidad: ${data.stats[5].base_stat}</p>
+        <p>Ataque: ${data.stats[1].base_stat} Defensa: ${data.stats[2].base_stat}</p>
+        <p>Ataque Especial: ${data.stats[3].base_stat} Defensa Especial: ${data.stats[4].base_stat}</p>
 
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`); 
-    const data = await res.json();
-
-    var root = document.getElementById("root");
-    root.innerHTML = data.forms[0].name
+    </section>`
 }
-
-Pokemon(5)
-Pokemon(6)
-Pokemon(7)
-Pokemon(25)
+pokemon(5)
+pokemon(8)
+pokemon(43)
+pokemon(40)

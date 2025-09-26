@@ -17,7 +17,5 @@ async function pokemon(id){
 
     </section>`
 }
-pokemon(5)
-pokemon(8)
-pokemon(43)
-pokemon(40)
+
+pokemon(25)

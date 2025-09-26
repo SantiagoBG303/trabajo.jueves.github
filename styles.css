@@ -1,74 +1,176 @@
-/* Fuente general */
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
-  color: #333;
+/* ============================
+   GOOGLE FONT
+=============================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --primary: #ff3b30;
+  --secondary: #ffffff;
+  --bg1: #0f2027;
+  --bg2: #203a43;
+  --bg3: #2c5364;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --glass-dark: rgba(20, 20, 20, 0.6);
+}
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  color: #fff;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* ============================
+   NAVBAR (más resaltado)
+=============================== */
+nav {
+  background: linear-gradient(90deg, #ff3b30, #ff6f61);
+  padding: 14px 25px;
+  display: flex;
+  gap: 20px;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 6px 20px var(--shadow);
 }
 
-/* Caja principal */
-.container {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  padding: 30px;
-  width: 350px;
-  text-align: center;
-  transition: transform 0.3s ease-in-out;
-}
-
-.container:hover {
-  transform: translateY(-5px);
-}
-
-/* Títulos */
-h1 {
-  font-size: 1.8rem;
-  color: #00796b;
-  margin-bottom: 20px;
-}
-
-/* Texto */
-p {
+nav button {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
   font-size: 1rem;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-/* Botón */
-button {
-  background: linear-gradient(135deg, #ff6f61, #f06292);
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border-radius: 50px;
+  color: #fff;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-button:hover {
-  background: linear-gradient(135deg, #f06292, #ff6f61);
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(240, 98, 146, 0.3);
+nav button:hover {
+  background: #fff;
+  color: #ff3b30;
+  box-shadow: 0 0 15px #fff;
+  transform: translateY(-3px);
 }
 
-/* Inputs */
-input {
-  width: 80%;
-  padding: 10px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
+nav button:active {
+  transform: scale(0.95);
+}
+
+/* ============================
+   ROOT
+=============================== */
+#root {
+  flex: 1;
+  padding: 40px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* ============================
+   TARJETAS (alto contraste)
+=============================== */
+.card {
+  background: var(--glass-dark);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 25px var(--shadow);
+  text-align: center;
+  transition: all 0.4s ease;
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.55);
+}
+
+.card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
   margin-bottom: 15px;
-  outline: none;
-  transition: border 0.3s;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.6));
 }
 
-input:focus {
-  border: 2px solid #00796b;
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #ffeb3b; /* Amarillo brillante */
+}
+
+.card p {
+  font-size: 1rem;
+  color: #f1f1f1;
+}
+
+/* ============================
+   DETALLE POKÉMON (resaltado)
+=============================== */
+.c-detalle {
+  grid-column: 1 / -1;
+  background: var(--glass-dark);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  padding: 45px 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  animation: popUp 0.7s ease;
+}
+
+.c-detalle img {
+  width: 240px;
+  max-width: 90%;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.6));
+}
+
+.c-detalle p {
+  margin: 8px 0;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.c-detalle p:nth-child(2) {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: #ffeb3b; /* Nombre del Pokémon bien visible */
+  letter-spacing: 1px;
+}
+
+/* ============================
+   ANIMACIONES
+=============================== */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popUp {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
